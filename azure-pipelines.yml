@@ -19,7 +19,7 @@ steps:
     Dockerfile: '**/Dockerfile'
 - task: CmdLine@2
   inputs:
-    script: 'sed -i ''s/latest/$(Build.BuildId)/g'' create-service-manifest.yaml'
+    script: 'sed -i ''s/latest/$(Build.BuildId)/g'' create-nodejs-service-manifest.yaml'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'create-nodejs-service-manifest.yaml'
