@@ -11,12 +11,19 @@ pool:
 
 steps:
 - task: Docker@2
-  displayName: 'Build and Push Image'
+  displayName: 'Build  Image'
   inputs:
     containerRegistry: 'fonacregistry'
     repository: 'nodejs-server'
-    command: 'buildAndPush'
+    command: 'build'
     Dockerfile: '**/Dockerfile'
+
+- task: Docker@2
+  displayName: 'Push Image'
+  inputs:
+    containerRegistry: 'fonacregistry'
+    repository: 'nodejs-server'
+    command: 'push'
 
 - task: CmdLine@2
   inputs:
