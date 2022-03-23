@@ -33,12 +33,13 @@ spec:
       - name: node
         image: fonacregistry.azurecr.io/nodejs-server:latest
         resources:
-          requests:  #request a Pod with  a minimum of 0.1 of a core and 250 MB of memory
-            cpu: "1000m"
-            memory: "1000Mi"
+          requests:  #request a Pod with  a minimum of 0.5 of a core and 128 MB of memory
+            cpu: "500m"
+            memory: "128Mi"
           limits:    #add a limit of 1.0 CPU and 256 MB of memory
-            cpu: "1500m"   
-            memory: "1500Mi"
+            cpu: "1000m"   
+            memory: "256Mi"
+            
         livenessProbe:
           httpGet:
             path: /healthy
