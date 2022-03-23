@@ -17,15 +17,7 @@ steps:
     repository: 'nodejs-server'
     command: 'build'
     Dockerfile: '**/Dockerfile'
-- task: VSTest@2
-  displayName: 'Run Assemble Test'
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+
 - task: Docker@2
   displayName: 'Push Image'
   inputs:
