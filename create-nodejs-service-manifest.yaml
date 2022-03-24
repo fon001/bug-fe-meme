@@ -19,6 +19,10 @@ spec:
         app: node
     
     spec:
+      # pod contains 1 container
+      containers:
+      - name: node
+        image: fonacregistry.azurecr.io/nodejs-server:latest
         # container opens port 22137
         ports:
         - containerPort: 22137
