@@ -2,21 +2,38 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   # deployment name
-  name: node-deployment
+  name: node-fe-deployment
   labels:
     app: node
 spec:
   # modify replicas according to your case
-  replicas: 2
+  replicas: 2 
   selector:
     matchLabels:
-      app: node    
+      app: node  
   # pod template
   template:
     metadata:
       labels:
         app: node
     spec:
+        strategy:
+      # We do daily rollouts, limit the revision history to two weeks of num releases 
+      # as we don't expect to roll back beyond that. 
+      revisionHistoryLimit: 14       
+      # deployment strategy
+      strategy:    
+        type: RollingUpdate
+        rollingUpdate:      
+          maxSurge: 1     
+          maxUnavailable: 1    
+      # the Deployment must wait for 60 seconds after seeing a Pod become healthy before moving on to updating the next Pod
+      minReadySeconds: 60
+      # sets the progress deadline to 10 minutes
+      # If any particular stage in the rollout fails to progress in 10 minutes, then the Deployment is marked as failed, 
+      # and all attempts to move the Deployment forward are halted
+      # Not the overall length of the deployment! Anytime the deployment creates or deletes a Pod
+      progressDeadlineSeconds: 600    
       # pod contains 1 container
       containers:
       - name: node
@@ -28,11 +45,11 @@ spec:
           limits:    #add a limit of 1.0 CPU and 256 MB of memory
             cpu: "1000m"   
             memory: "256Mi" 
-        # container opens port 22137
+        # container opens port 4000
         ports:
         - containerPort: 22137
           name: http
-          protocol: TCP            
+          protocol: TCP
 ---
 apiVersion: v1
 kind: Service
@@ -50,4 +67,4 @@ spec:
   selector:
     # Loadbalance traffic across Pods matching
     # this label selector
-    app: node
+    app: node          
