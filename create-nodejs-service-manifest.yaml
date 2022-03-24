@@ -19,7 +19,7 @@ spec:
         app: node
     
     spec:
-        strategy:
+      strategy:
       # We do daily rollouts, limit the revision history to two weeks of num releases 
       # as we don't expect to roll back beyond that. 
       revisionHistoryLimit: 14       
