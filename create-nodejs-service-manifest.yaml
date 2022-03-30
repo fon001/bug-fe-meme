@@ -55,10 +55,10 @@ spec:
           successThreshold: 1 
         resources:
           requests:  #request a Pod with  a minimum of 0.1 of a core and 250 MB of memory
-            cpu: "500m"
+            cpu: "150m"
             memory: "128Mi"
           limits:    #add a limit of 1.0 CPU and 256 MB of memory
-            cpu: "1000m"   
+            cpu: "200m"   
             memory: "256Mi"
 
         # container opens port 22137
