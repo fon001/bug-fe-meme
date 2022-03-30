@@ -59,7 +59,7 @@ spec:
             memory: "256Mi"
           limits:    #add a limit of 1.0 CPU and 256 MB of memory
             cpu: "200m"   
-            memory: "500Mi"
+            memory: "512Mi"
 
         # container opens port 22137
         ports:
