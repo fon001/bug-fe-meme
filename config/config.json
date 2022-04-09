@@ -2,7 +2,7 @@
 	"development": {
         "config_id": "development",
         "app_name": "BP Category Calculator",
-        "database": "mongodb+srv://fonaugustine:x0k8qE2CydtJSOuL@bpmonitor.saxlu.mongodb.net/mydb?retryWrites=true&w=majority",
+        "database": "mongodb+srv://fonaugustine:**********@bpmonitor.saxlu.mongodb.net/mydb?retryWrites=true&w=majority",
 		"database_name": "mydb",
 		"database_collection": "customers",
 		"webservice": "http://bp-service:8080/BPRestWS-1.0-SNAPSHOT/retrieve/bp/getJson/", 
